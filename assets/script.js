@@ -65,6 +65,8 @@ function generatePassword(var1, var2, var3, var4) {
 function clearText(){
   areaText.innerHTML ="";
 }
+
+//Main Function activated via the generate Button
 function writePassword() {
 
   var confirmLower = confirm("Would you like to include Lower Case Characters?");
@@ -75,15 +77,19 @@ function writePassword() {
   generatePassword(confirmLower, confirmUpper, confirmNumbers, confirmSpecial);
 }
 
+//Side Function to copy everything on the textarea to the clipboard
 function copyClipboard(){
     var password = document.querySelector("textarea");
     password.select();
     document.execCommand("copy");
     
+    //exception if there is no generated password in the textarea
     if (!(password.innerHTML)){
         alert("You have yet to generate anything.");
         return 0;
     }
 }
+
+//added button for copying to clipboard
 generateBtn.addEventListener("click", writePassword);
 copyClipBtn.addEventListener("click", copyClipboard);
