@@ -1,5 +1,6 @@
 // Calling our variables in the DOM
 var generateBtn = document.querySelector("#generate");
+var copyClipBtn = document.querySelector("#clipboard");
 var areaText = document.querySelector("textarea");
 
 //initializing all the variables to be used in functions below
@@ -74,4 +75,15 @@ function writePassword() {
   generatePassword(confirmLower, confirmUpper, confirmNumbers, confirmSpecial);
 }
 
+function copyClipboard(){
+    var password = document.querySelector("textarea");
+    password.select();
+    document.execCommand("copy");
+    
+    if (!(password.innerHTML)){
+        alert("You have yet to generate anything.");
+        return 0;
+    }
+}
 generateBtn.addEventListener("click", writePassword);
+copyClipBtn.addEventListener("click", copyClipboard);
